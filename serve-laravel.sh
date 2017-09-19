@@ -9,10 +9,12 @@ if [ -n "$6" ]; then
    done
 fi
 
+url=$(curl -s http://icanhazip.com/s)
+
 block="server {
     listen ${3:-80};
     listen ${4:-443} ssl http2;
-    server_name $1;
+    server_name ${5:-url};
     root \"$2\";
 
     index index.html index.htm index.php;
